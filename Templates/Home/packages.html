@@ -1,0 +1,116 @@
+{% extends 'base.html' %} {% block package1 %} active {% endblock %} 
+{% block home %}
+<!-- Page Content -->
+<div class="page-heading products-heading header-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <h4>Packages</h4>
+          <h2>choose your package</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="filters">
+          <ul>
+            {% for cat in Add_category %}
+            <a href="#"><li>{{cat.title}}</li></a>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="filters-content">
+          <div class="row grid">
+            {% for items in Destination %}
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="product-item">
+                <a href="{{items.get_absolute_url}}"
+                  ><img
+                    src="/media/{{items.feature_image}}"
+                    alt="Images"
+                    style="width: 350px; height: 300px"
+                /></a>
+                <div class="down-content">
+                  <a href="{{items.get_absolute_url}}"
+                    ><h4><b>{{items.title}}</b></h4></a
+                  >
+                  <h6>{{items.price}}<b> Rs</b></h6>
+                  <hr />
+                  <div class="row">
+                    {% for category in items.categories.all %}
+                    <a href="{{category.get_absolute_url}}">
+                      {{ category.title }}</a
+                    >
+                    {% endfor %}<br />
+                  </div>
+                  <hr />
+                  <p>{{ items.description|slice:":200" }}...</p>
+                  <hr />
+                  <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                  </ul>
+                  <span>Reviews(24)</span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div
+              class="pagination"
+              style="padding-left: 40%; padding-top: 20px; padding-bottom: 20px"
+            >
+              <span class="step-links">
+                {% if Destination.has_previous %}
+                <button class="btn" style="background: #f33f3f">
+                  <a href="?page=1" style="color: black">« first</a>
+                </button>
+                <button class="btn" style="background: #f33f3f">
+                  <a
+                    href="?page={{ Destination.previous_page_number }}"
+                    style="color: black"
+                    >previous</a
+                  >
+                </button>
+                {% endif %}
+
+                <span class="current">
+                  Page {{ Destination.number }} of {{
+                  Destination.paginator.num_pages }}
+                </span>
+
+                {% if Destination.has_next %}
+                <button class="btn" style="background: #f33f3f">
+                  <a
+                    href="?page={{ Destination.next_page_number }}"
+                    style="color: black"
+                    >next</a
+                  >
+                </button>
+                <button class="btn" style="background: #f33f3f">
+                  <a
+                    href="?page={{ Destination.paginator.num_pages }}"
+                    style="color: black"
+                    >last »</a
+                  >
+                </button>
+                {% endif %}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
