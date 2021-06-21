@@ -12,7 +12,7 @@ urlpatterns = [
     path('home/', include('Home.urls')),
     path('login/', include('Signup.urls')),
     path('login/', include('Login.urls')),
+    path('payment/', include('epay.urls')),
     path('about/', about_view, name='about'),
     path('packages/', PackagesView, name='packages'),
-
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
