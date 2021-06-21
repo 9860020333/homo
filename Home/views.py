@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from Login.forms import Login_Form
 
 def home_list(request):
-    context=Destination.objects.all()[0:6]
+    context=Destination.objects.all().order_by('-id')[0:6]
     form=Login_Form()
     return render(request,'Home/home.html',{'products':context,'form':form})
 

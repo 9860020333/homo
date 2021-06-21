@@ -28,7 +28,7 @@ class Destination(models.Model):
     image1=models.ImageField(upload_to='product_image',default='default.jpg')
     image2=models.ImageField(upload_to='product_image',default='default.jpg')
     image3 = models.ImageField(upload_to='product_image',default='default.jpg')
-    feature_image=models.ImageField(upload_to='product_image',null=True,blank=True)
+    feature_image=models.ImageField(upload_to='product_image', default='default.jpg')
     other_details=models.TextField(null=True,blank=True)
     number_of_people=models.IntegerField(null=True,blank=True)
     price=models.IntegerField(null=True,blank=True)
