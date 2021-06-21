@@ -5,6 +5,6 @@ steps to get started:\
 3- run "virtualenv ."\
 4- cd to scripts \
 5- run git clone https://github.com/9860020333/pilgrim.git \
-6- run activate
+6- run activate\
 7- install using pip django, requests, pillow \
 8- start the server and run the site 
