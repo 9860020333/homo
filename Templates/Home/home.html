@@ -4,6 +4,7 @@
 {% block title %}
   home
 {% endblock %}
+
 {% block home1 %}
 active
 {% endblock %}
@@ -73,7 +74,7 @@ active
             </div>
           </div>
           {% endfor %}  
-          
+          <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
           {% if not request.user.is_authenticated %}
           <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
