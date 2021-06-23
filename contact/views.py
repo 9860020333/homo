@@ -16,6 +16,6 @@ def contact(request):
         message = "Name:"+name+'\n'+"SENDER:"+recepient+'\n'+"MESSAGE:"+message
         send_mail(subject,
                   message, EMAIL_HOST_USER, ['webcodersdjango@gmail.com'], fail_silently=False)
-        messages.success(request, f'Your email has been sent !!')
+        messages.success(request, f'Thank you for the response. You will be contacted soon!!')
         return redirect('home')
     return render(request, 'Home/contact.html', {'form': sub})
