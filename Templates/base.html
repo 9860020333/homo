@@ -1,210 +1,137 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 
-  <head>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <noscript>
+    <link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" />
+  </noscript>
+</head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap' %}" rel="stylesheet">
-
-    <title>
-    {% block title %}
-    {% endblock title %}
-    </title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-<!--
-
-TemplateMo 546 Sixteen Clothing
-
-https://templatemo.com/tm-546-sixteen-clothing
-
--->
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/templatemo-sixteen.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/notice.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- this is login css -->
-    <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
-    <!-- Font Awesome CSS -->
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
-	<!-- Demo CSS -->
-	<link rel="stylesheet" href="{% static 'login/css/demo.css' %}">
-  
-  </head>
-
-  <body>
-
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
-{% for message in messages %}
-<div class="message" style='background-color:aquamarine; text-align: center;'>
-  {{ message }}
-  <a href="#" class="del-msg">&times;</a>
-</div>
-{% endfor %}
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
 
     <!-- Header -->
-    <header>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href={% url "home" %}><h2 style="font-size: 90%">Pilgrims <em>Travel & Tours</em></h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item {% block home1 %}{% endblock %}">
-                <a class="nav-link" href={% url "home" %}>Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              <li class="nav-item {% block package1 %}{% endblock %}">
-                <a class="nav-link" href={% url "packages" %}>Packages</a>
-              </li>
-              <li class="nav-item {% block about1 %}{% endblock %}">
-                <a class="nav-link" href={% url "about" %}>About Us</a>
-              </li>
-              <li class="nav-item  {% block contact1 %}{% endblock %}">
-                <a class="nav-link" href={% url "contact" %}>Contact Us</a>
-              </li>
-                                          {% if user.is_authenticated %}
-                                          <li class="nav-item">
-                <li class="nav-item  {% block login3 %}{% endblock %}">
-                  <a class="nav-link" data-toggle="modal" data-target="#loginModal" id ='login-id'><a href={% url "logout" %}>Logout</a></a>
-                                            </a>
-                                          </li>
-                                          {% else %}
-                                          <li class="nav-item  {% block login2 %}{% endblock %}">
-                                            <a class="nav-link" data-toggle="modal" data-target="#loginModal"></a>
-                                          </li>
-                                          {% endif %}
-              {% if user.is_authenticated %}
-                  <li class="nav-item">
-                    <a href="#">
-                    {% for detail in request.user.profile_set.all %}
-                       <img src="/media/{{detail.profile_picture}}" width="40" height="40" class="rounded-circle"> 
-                    {% endfor %}
-                  </a>
-                </li>
-                {% else %}
-                <li class="nav-item  {% block login1 %}{% endblock %}">
-                  <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-              {% endif %}
+    <header id="header">
+      <div class="inner">
 
-            </ul>
-          </div>
-        </div>
-      </nav>
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="logo">
+          <span class="fa fa-plane"></span> <span class="title">SOHO AUTOMATIONS</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+          </ul>
+        </nav>
+
+      </div>
     </header>
 
+    <!-- Menu -->
+    <nav id="menu">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="{% url 'home' %}" class="active">Home</a></li>
 
+        <li><a href="{% url 'packages' %}">Packages</a></li>
 
-{% block home %}
-{% endblock home %}
+        <li><a href="#">Blog</a></li>
 
+        <li>
+          <a href="#" class="dropdown-toggle">About</a>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright &copy; Soho Automations Pvt. Ltd.
-            
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">WebCoders</a></p>
+          <ul>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    {% block home %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <section>
+          <h2><a href="{% url 'contact' %}">Contact Us</a></h2>
+          <form method="post" action="#">
+            {% csrf_token %}
+            <div class="fields">
+              <div class="field half">
+                {{form.name}}
+              </div>
+
+              <div class="field half">
+                {{form.email}}
+              </div>
+
+              <div class="field">
+                {{form.subject}}
+              </div>
+
+              <div class="field">
+                {{form.body}}
+              </div>
+
+              <div class="field text-right">
+                <label>&nbsp;</label>
+
+                <ul class="actions">
+                  <li><input type="submit" value="Send Message" class="primary" /></li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </div>
+          </form>
+        </section>
+        <section>
+          <h2>Contact Info</h2>
+
+          <ul class="alt">
+            <li><span class="fa fa-envelope-o"></span> <a href="#">contact@soboautomations.com</a></li>
+            <li><span class="fa fa-phone"></span> +977-9868225021 </li>
+            <li><span class="fa fa-map-pin"></span> Bode Plot, Bhaktapur, Nepal
+            </li>
+          </ul>
+
+          <h2>Follow Us</h2>
+
+          <ul class="icons">
+            <li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+          </ul>
+        </section>
+
+        <ul class="copyright">
+          <li>Copyright © 2020 SOHO AUTOMATIONS </li>
+          <li>Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></li>
+        </ul>
       </div>
     </footer>
 
+  </div>
 
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.notice.js' %}"></script>
-
-
-    <!-- Additional Scripts -->
-    <script src="{% static 'assets/js/custom.js' %}"></script>
-    <script src="{% static 'assets/js/owl.js' %}"></script>
-    <script src="{% static 'assets/js/slick.js' %}"></script>
-    <script src="{% static 'assets/js/isotope.js' %}"></script>
-    <script src="{% static 'assets/js/accordions.js' %}"></script>
-
-    <!-- login scripts -->
-    <!-- jQuery -->
-    <script src="{% static 'https://code.jquery.com/jquery-3.3.1.slim.min.js' %}"></script>
-    <!-- Popper JS -->
-    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' %}"></script>
-    <!-- Bootstrap JS -->
-    <script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' %}"></script>
-    <!-- Custom Script -->      
-    <script  src="{% static 'login/js/script.js' %}"></script>
-
-    <script language = "text/Javascript"> 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
-    </script>
-<!-- message -->
-<script type="text/javascript">
-  (function () {
-    var options = {
-      // facebook: "191365582342865", // Facebook page ID
-      whatsapp: "+9779841019357", // WhatsApp number
-      call_to_action: "Message us", // Call to action
-      button_color: "#FF6550", // Color of button
-      position: "left", // Position may be 'right' or 'left'
-      order: "facebook,whatsapp", // Order of buttons
-    };
-    var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-    s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-  })();
-</script>
-<script>
-  $(document).ready(function () {
-    // messages timeout for 10 sec 
-    setTimeout(function () {
-      $('.message').fadeOut('slow');
-    }, 3000); // <-- time in milliseconds, 1000 =  1 sec
-
-    // delete message
-    $('.del-msg').live('click', function () {
-      $('.del-msg').parent().attr('style', 'display:none;');
-    })
-  });
-</script>
-
+  <!-- Scripts -->
+  <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
 </html>

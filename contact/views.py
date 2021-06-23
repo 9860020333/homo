@@ -18,4 +18,4 @@ def contact(request):
                   message, EMAIL_HOST_USER, ['webcodersdjango@gmail.com'], fail_silently=False)
         messages.success(request, f'Thank you for the response. You will be contacted soon!!')
         return redirect('home')
-    return render(request, 'Home/contact.html', {'form': sub})
+    return render(request, 'base.html', {'form': sub})
