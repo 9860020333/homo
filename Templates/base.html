@@ -29,6 +29,8 @@ https://templatemo.com/tm-546-sixteen-clothing
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/templatemo-sixteen.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/notice.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- this is login css -->
@@ -78,6 +80,17 @@ https://templatemo.com/tm-546-sixteen-clothing
               <li class="nav-item  {% block contact1 %}{% endblock %}">
                 <a class="nav-link" href={% url "contact" %}>Contact Us</a>
               </li>
+                                          {% if user.is_authenticated %}
+                                          <li class="nav-item">
+                <li class="nav-item  {% block login3 %}{% endblock %}">
+                  <a class="nav-link" data-toggle="modal" data-target="#loginModal" id ='login-id'><a href={% url "logout" %}>Logout</a></a>
+                                            </a>
+                                          </li>
+                                          {% else %}
+                                          <li class="nav-item  {% block login2 %}{% endblock %}">
+                                            <a class="nav-link" data-toggle="modal" data-target="#loginModal"></a>
+                                          </li>
+                                          {% endif %}
               {% if user.is_authenticated %}
                   <li class="nav-item">
                     <a href="#">
@@ -91,6 +104,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                   <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
                 </li>
               {% endif %}
+
             </ul>
           </div>
         </div>
@@ -98,8 +112,21 @@ https://templatemo.com/tm-546-sixteen-clothing
     </header>
 
 
+
 {% block home %}
 {% endblock home %}
+                {% if messages %}
+                {% for message in messages %}
+                <script type="text/javascript">
+                  $("#demo-success").ready(function () {
+                    $.notice({
+                      text: "the process!",
+                      type: "success"
+                    });
+                  });
+                </script>
+                {% endfor %}
+                {% endif %}
 
     <footer>
       <div class="container">
@@ -115,9 +142,12 @@ https://templatemo.com/tm-546-sixteen-clothing
       </div>
     </footer>
 
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.notice.js' %}"></script>
 
 
     <!-- Additional Scripts -->
@@ -164,6 +194,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
   })();
 </script>
+
 
 </body>
 

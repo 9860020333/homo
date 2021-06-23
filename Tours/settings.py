@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Products_Details','Home','Signup','Login','contact','epay','about',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -129,4 +130,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'webcodersdjango@gmail.com'
-EMAIL_HOST_PASSWORD = 'ifadyolkmigazxkn'
+EMAIL_HOST_PASSWORD = 'qklnbxbiihbmoqdh'

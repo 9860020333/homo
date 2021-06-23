@@ -14,7 +14,7 @@ def Signup_View(request):
                 user.set_password(user.password)
                 user.save()
                 messages.add_message(request, messages.SUCCESS, 'Account Created successfully')
-                return redirect('/')
+                return redirect('/home')
             else:
                 form=Signup_Form(request.POST)
                 return render(request,'Signup/signup.html',{"form":form})

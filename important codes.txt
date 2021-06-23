@@ -1,0 +1,5 @@
+kapil daiko buti:
+git gc --prune=now
+
+switch branch without commit:
+git switch -f <branch name>
