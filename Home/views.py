@@ -21,7 +21,7 @@ def PackagesView(request):
     dest = Destination.objects.all()
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(dest, 3)
+    paginator = Paginator(dest, 6)
     try:
         users = paginator.page(page)
     except PageNotAnInteger:
