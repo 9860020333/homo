@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <noscript>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+        <!-- Font Awesome CSS -->
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+  </noscript>
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="logo">
+          <span class="fa fa-plane"></span> <span class="title">SOHO AUTOMATIONS</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="{% url 'home' %}" class="active">Home</a></li>
+
+        <li><a href="{% url 'packages' %}">Packages</a></li>
+
+        <li><a href="#">Blog</a></li>
+
+        <li>
+          <a href="#" class="dropdown-toggle">About</a>
+
+          <ul>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    {% block home %}
+    
+    {% endblock home %}
+    <i onclick="topFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-circle-up" style="font-size: 50px; padding-right:20px; text-align: right;"></i>
+    <script>
+    //Get the button:
+    mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>
+    <footer id="footer">
+        <div class="inner" style="align-content: center;">
+            <section>
+                <ul class="icons">
+                    <li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                </ul>
+
+                &nbsp;
+            </section>
+
+            <ul class="copyright">
+                <li>Copyright © 2020 Soho Automations Pvt. Ltd. </li>
+                <li>Developed by: <a href="#">WebCoders</a></li>
+            </ul>
+        </div>
+    </footer> 
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+  <script src="{% static 'login/js/script.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
